@@ -46,14 +46,15 @@ app.use(
   })
 );
 
-// // Passport JS is what we use to handle our logins
+// Passport JS is what we use to handle our logins
 app.use(passport.initialize());
 app.use(passport.session());
 
-// // The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
+// The flash middleware let's us use req.flash('error', 'Shit!'), which will then pass that message to the next page the user requests
 app.use(flash());
 
 // pass variables to our templates + all requests
+// ! locals is part of express (like attributes manager in Alexa)
 app.use((req, res, next) => {
   res.locals.h = helpers;
   res.locals.flashes = req.flash();
