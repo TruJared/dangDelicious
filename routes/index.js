@@ -2,6 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 const storeController = require('../controllers/storeController');
+// ! neee this to catch errors for controllers, etc... Thanks Wes Bos ! //
+const { catchErrors } = require('../handlers/errorHandlers');
 
 // router.get('/', (req, res) => {
 // const jared = { name: 'jared', age: '40', cool: true };
@@ -23,6 +25,7 @@ const storeController = require('../controllers/storeController');
 // });
 
 router.get('/', storeController.homePage);
-router.get('/add', storeController.store);
+router.get('/add', storeController.addStore);
+router.post('/add', catchErrors(storeController.createStore));
 
 module.exports = router;
