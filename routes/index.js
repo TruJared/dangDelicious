@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/storeController');
 
-// Do work here
 // router.get('/', (req, res) => {
 // const jared = { name: 'jared', age: '40', cool: true };
 // * res.json(jared);
@@ -17,12 +16,13 @@ const storeController = require('../controllers/storeController');
 //   res.render('hello', jared);
 // });
 
-router.get('/', storeController.myMiddleware, storeController.homePage);
-
 // * router with a variable
-router.get('/reverse/:name', (req, res) => {
-  const reverse = [...req.params.name].reverse().join('');
-  res.send(reverse);
-});
+// router.get('/reverse/:name', (req, res) => {
+//   const reverse = [...req.params.name].reverse().join('');
+//   res.send(reverse);
+// });
+
+router.get('/', storeController.homePage);
+router.get('/add', storeController.store);
 
 module.exports = router;
